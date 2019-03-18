@@ -1,0 +1,12 @@
+
+jar {
+    baseName = "boot"
+}
+
+
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-web"
+    testCompile lib.spring.boot.starter.test
+}
+
+

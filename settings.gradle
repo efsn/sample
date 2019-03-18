@@ -1,0 +1,10 @@
+rootProject.name = "sample"
+
+include "functional"
+
+include "springboot", "springcloud"
+
+include "netty"
+
+
+//inclunde "amqp"

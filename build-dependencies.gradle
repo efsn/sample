@@ -1,0 +1,121 @@
+ext {
+    // spring libs
+    springVersion = "5.0.7.RELEASE"
+    springSessionVersion = "1.3.1.RELEASE"
+
+    // google libs
+    guavaVersion = "23.0"
+    grpcVersion = "1.12.0"
+    protobufVersion = "3.5.1"
+    protobufVersion = "3.5.1"
+    protobufJavaFormatVersion = "1.4"
+
+    // coreos libs
+    etcd4jVersion = "2.16.0"
+
+    // google libs
+    groovyVersion = "3.0.0-alpha-2"
+
+    // log libs
+    slf4jVersion = "1.7.21"
+    logbackVersion = "1.2.3"
+
+    // netty libs
+    nettyNativeVersion = "2.0.7.Final"
+    nettyHandlerVersion = "4.1.22.Final"
+
+    // json libs
+    fastjsonVersion = "1.2.30"
+
+    // test libs
+    testngVersion = "6.11"
+
+    // database libs
+    mysqlConnectorVersion = "5.1.34"
+
+    // nosql libs
+    jedisVersion = "2.9.0"
+
+    // other libs
+    lombokVersion = "1.16.16"
+    servletVersion = "3.1.0"
+    validator = "5.4.1.Final"
+    influxdbVersion = "2.5"
+    aspectjVersion = "1.9.1"
+
+    lib = [
+            grpc     : [
+                    protobuf   : "io.grpc:grpc-protobuf:$grpcVersion",
+                    core       : "io.grpc:grpc-core:$grpcVersion",
+                    stub       : "io.grpc:grpc-stub:$grpcVersion",
+                    auth       : "io.grpc:grpc-auth:$grpcVersion",
+                    netty      : "io.grpc:grpc-netty:$grpcVersion",
+                    nettyShaded: "io.grpc:grpc-netty-shaded:$grpcVersion"
+            ],
+            netty    : [
+                    native         : "io.netty:netty-tcnative:$nettyNativeVersion",
+                    nativeBoringssl: "io.netty:netty-tcnative-boringssl-static:$nettyNativeVersion",
+                    handler        : "io.netty:netty-handler:$nettyHandlerVersion",
+                    nettyCodecHttp : "io.netty:netty-codec-http:$nettyHandlerVersion",
+                    nettyCodecHttp2: "io.netty:netty-codec-http2:$nettyHandlerVersion"
+            ],
+            protobuf : [
+                    java  : "com.google.protobuf:protobuf-java:$protobufVersion",
+                    protoc: "com.google.protobuf:protoc:$protobufVersion",
+                    format: "com.googlecode.protobuf-java-format:protobuf-java-format:$protobufJavaFormatVersion"
+            ],
+            etcd4j   : "org.mousio:etcd4j:$etcd4jVersion",
+
+            spring   : [
+                    boot: [
+                            dependencies: "org.springframework.boot:spring-boot-dependencies:$springBootVersion",
+                            starter     : [
+                                    core   : "org.springframework.boot:spring-boot-starter:$springBootVersion",
+                                    web    : "org.springframework.boot:spring-boot-starter-web:$springBootVersion",
+                                    test   : "org.springframework.boot:spring-boot-starter-test:$springBootVersion",
+                                    cache  : "org.springframework.boot:spring-boot-starter-cache:$springBootVersion",
+                                    hateoas: "org.springframework.boot:spring-boot-starter-hateoas:$springBootVersion",
+                                    ws     : "org.springframework.boot:spring-boot-starter-web-services:$springBootVersion",
+                                    data   : [
+                                            mongodb: "org.springframework.boot:spring-boot-starter-data-mongodb:$springBootVersion",
+                                            rest   : "org.springframework.boot:spring-boot-starter-data-rest:$springBootVersion",
+                                            jpa    : "org.springframework.boot:spring-boot-starter-data-jpa:$springBootVersion"
+                                    ]
+                            ]
+                    ],
+            ],
+
+            aspectj  : [
+                    aspectjrt    : "org.aspectj:aspectjrt:$aspectjVersion",
+                    aspectjweaver: "org.aspectj:aspectjweaver:$aspectjVersion"
+            ],
+
+            validator: "org.hibernate:hibernate-validator:$validator",
+            servlet  : "javax.servlet:javax.servlet-api:$servletVersion",
+
+            testng   : "org.testng:testng:$testngVersion",
+            slf4j    : "org.slf4j:slf4j-api:$slf4jVersion",
+            logback  : [
+                    core   : "ch.qos.logback:logback-core:$logbackVersion",
+                    classic: "ch.qos.logback:logback-classic:$logbackVersion"
+            ],
+            lombok   : "org.projectlombok:lombok:$lombokVersion",
+            fastjson : "com.alibaba:fastjson:$fastjsonVersion",
+
+            influxdb : "org.influxdb:influxdb-java:$influxdbVersion",
+            redis    : "redis.clients:jedis:$jedisVersion",
+            mysql    : "mysql:mysql-connector-java:$mysqlConnectorVersion",
+            apache   : [
+                    commons: [
+                            lang3: "org.apache.commons:commons-lang3:3.7",
+                            pool2: "org.apache.commons:commons-pool2:2.5.0",
+
+                    ]
+            ],
+
+            groovy   : "org.codehaus.groovy:groovy-all:$groovyVersion",
+            guava    : "com.google.guava:guava:$guavaVersion"
+    ]
+}
+
+
