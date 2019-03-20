@@ -1,0 +1,3 @@
+dependencies {
+    implementation lib.spring.cloud.hystrix, lib.spring.cloud.hystrix_dashboard
+}

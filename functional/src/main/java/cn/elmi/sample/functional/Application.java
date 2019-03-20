@@ -14,15 +14,27 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package cn.elmi.sample.function;
+package cn.elmi.sample.functional;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @author Arthur
  * @since 1.0
  */
-@FunctionalInterface
-public interface Func {
+@Data
+@EqualsAndHashCode(callSuper = true)
+public class Application extends Functor {
 
-    Object exc(Object val);
+    private Func func;
+
+    private Application(Func func) {
+        super(func);
+    }
+
+    public Functor apply(Functor functor) {
+        return of(func.exc(functor.getVal()));
+    }
 
 }

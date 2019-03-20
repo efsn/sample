@@ -14,27 +14,24 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package cn.elmi.sample.function;
-
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+package cn.elmi.sample.functional;
 
 /**
  * @author Arthur
  * @since 1.0
  */
-@Data
-@EqualsAndHashCode(callSuper = true)
-public class Application extends Functor {
+public class Maybe extends Functor {
 
-    private Func func;
-
-    private Application(Func func) {
-        super(func);
+    private Maybe(Object val) {
+        super(val);
     }
 
-    public Functor apply(Functor functor) {
-        return of(func.exc(functor.getVal()));
+    public Maybe map(Func func) {
+        return of(null != getVal() ? func.exc(getVal()) : null);
+    }
+
+    public Maybe of(Object val) {
+        return new Maybe(val);
     }
 
 }
