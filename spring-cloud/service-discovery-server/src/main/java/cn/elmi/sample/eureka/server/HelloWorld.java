@@ -14,42 +14,25 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package cn.elmi.sample.functional;
+package cn.elmi.sample.eureka.server;
 
-import lombok.Data;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-/**
- * @author Arthur
- * @since 1.0
- */
-@Data
-public class Functor {
+@SpringBootApplication
+@EnableEurekaServer
+public class HelloWorld {
 
-    private Object val;
-
-    protected Functor(Object val) {
-        this.val = val;
+    @RequestMapping("/")
+    public String helloWorld() {
+        return "Hello World";
     }
 
-    /**
-     * 集合转换
-     * @param func
-     * @return
-     */
-    public Functor map(Func func) {
-        return of(func.exc(val));
-    }
-
-    public Functor of(Object val) {
-        return new Functor(val);
-    }
-
-    /**
-     * 链式
-     * @return
-     */
-    public Object join(){
-        return getVal();
+    public static void main(String[] args) {
+        SpringApplication.run(HelloWorld.class, args);
     }
 
 }

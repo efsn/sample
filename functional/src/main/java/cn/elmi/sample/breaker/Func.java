@@ -14,24 +14,15 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package cn.elmi.sample.functional;
+package cn.elmi.sample.breaker;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+/**
+ * @author Arthur
+ * @since 1.0
+ */
+@FunctionalInterface
+public interface Func {
 
-@RestController
-@EnableAutoConfiguration
-public class HelloWorld {
-
-    @RequestMapping("/")
-    public String helloWorld() {
-        return "Hello World";
-    }
-
-    public static void main(String[] args) {
-        SpringApplication.run(HelloWorld.class, args);
-    }
+    Object exc(Object val);
 
 }

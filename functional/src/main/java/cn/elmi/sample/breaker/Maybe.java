@@ -14,24 +14,24 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package cn.elmi.sample.functional;
+package cn.elmi.sample.breaker;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+/**
+ * @author Arthur
+ * @since 1.0
+ */
+public class Maybe extends Functor {
 
-@RestController
-@EnableAutoConfiguration
-public class HelloWorld {
-
-    @RequestMapping("/")
-    public String helloWorld() {
-        return "Hello World";
+    private Maybe(Object val) {
+        super(val);
     }
 
-    public static void main(String[] args) {
-        SpringApplication.run(HelloWorld.class, args);
+    public Maybe map(Func func) {
+        return of(null != getVal() ? func.exc(getVal()) : null);
+    }
+
+    public Maybe of(Object val) {
+        return new Maybe(val);
     }
 
 }

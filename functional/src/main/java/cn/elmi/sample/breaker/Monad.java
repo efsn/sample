@@ -14,15 +14,20 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package cn.elmi.sample.functional;
+package cn.elmi.sample.breaker;
 
 /**
  * @author Arthur
  * @since 1.0
  */
-@FunctionalInterface
-public interface Func {
+public class Monad extends Functor {
 
-    Object exc(Object val);
+    private Monad(Func func) {
+        super(func);
+    }
+
+    public Object flatMap(Func func) {
+        return map(func).join();
+    }
 
 }
