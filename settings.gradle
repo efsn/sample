@@ -2,14 +2,14 @@ rootProject.name = "sample"
 
 include "functional"
 
-include "spring-boot", "spring-cloud"
+include "spring-boot"
 
 
-include "spring-cloud:service-discovery-server",
-        "spring-cloud:service-discovery-client",
-        "spring-cloud:circuit-breaker",
-        "spring-cloud:load-balancer-ribbon"
-
+// multiple level modules
+file("spring-cloud").eachDir { dir ->
+    include dir.name
+    project(":${dir.name}").projectDir = dir
+}
 
 include "netty"
 

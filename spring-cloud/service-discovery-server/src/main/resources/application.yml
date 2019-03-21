@@ -1,4 +1,13 @@
-spring:
-  freemarker:
-    template-loader-path: classpath:/templetes/
-    prefer-flie-system-access: false
+server:
+  port: 8790
+
+# discovery configuration
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    # disable register self
+    register-with-eureka: false
+    # disable fetch
+    fetch-registry: false
+    service-url.defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka

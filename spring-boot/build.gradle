@@ -6,7 +6,10 @@ jar {
 
 dependencies {
     compile "org.springframework.boot:spring-boot-starter-web"
+//    compile "org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:2.1.1.RELEASE"
+
     testCompile lib.spring.boot.starter.test
+
 }
 
 
