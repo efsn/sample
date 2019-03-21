@@ -14,63 +14,24 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package cn.elmi.sample.breaker;
-
-import lombok.Data;
+package cn.elmi.sample.functional;
 
 /**
  * @author Arthur
  * @since 1.0
  */
-@Data
-public class IO {
+public class Maybe extends Functor {
 
-    private Object val;
-
-    /**
-     * 集合转换
-     *
-     * @param func
-     * @return
-     */
-    public IO map(Func func) {
-        return of(func);
+    private Maybe(Object val) {
+        super(val);
     }
 
-    private IO(Func func) {
-        this.val = func;
+    public Maybe map(Func func) {
+        return of(null != getVal() ? func.exc(getVal()) : null);
     }
 
-    public IO of(Func func) {
-        return new IO(func);
-    }
-
-    /**
-     * 链式
-     *
-     * @return
-     */
-    public Object join() {
-        return getVal();
-    }
-
-
-    public Object flatMap(Func func) {
-        return map(func).join();
-    }
-
-    public static void main(String[] args) {
-        Func read = x -> new IO(y -> x);
-
-        Func print = x -> new IO(y -> {
-            System.out.println(x);
-            return x;
-        });
-
-        Func tail = x -> new IO(y -> x.toString());
-
-        ((Monad) ((Monad) read.exc("xyz")).flatMap(tail)).flatMap(print);
-
+    public Maybe of(Object val) {
+        return new Maybe(val);
     }
 
 }

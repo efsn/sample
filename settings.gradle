@@ -1,6 +1,6 @@
 rootProject.name = "sample"
 
-include "functional"
+include "data-structure", "functional"
 
 include "spring-boot"
 

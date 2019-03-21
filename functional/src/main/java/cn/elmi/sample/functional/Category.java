@@ -1,4 +1,4 @@
-package cn.elmi.sample.breaker;
+package cn.elmi.sample.functional;
 
 
 public class Category {

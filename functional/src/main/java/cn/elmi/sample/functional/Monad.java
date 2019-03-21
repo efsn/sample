@@ -14,42 +14,20 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package cn.elmi.sample.breaker;
-
-import lombok.Data;
+package cn.elmi.sample.functional;
 
 /**
  * @author Arthur
  * @since 1.0
  */
-@Data
-public class Functor {
+public class Monad extends Functor {
 
-    private Object val;
-
-    protected Functor(Object val) {
-        this.val = val;
+    private Monad(Func func) {
+        super(func);
     }
 
-    /**
-     * 集合转换
-     * @param func
-     * @return
-     */
-    public Functor map(Func func) {
-        return of(func.exc(val));
-    }
-
-    public Functor of(Object val) {
-        return new Functor(val);
-    }
-
-    /**
-     * 链式
-     * @return
-     */
-    public Object join(){
-        return getVal();
+    public Object flatMap(Func func) {
+        return map(func).join();
     }
 
 }
