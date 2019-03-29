@@ -1,0 +1,54 @@
+plugins {
+    id "com.cuisongliu.plugin.mybatis-generator" version "0.9.6"
+}
+
+dependencies {
+    compile lib.mysql
+    compile "org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.2"
+
+    compileJava.dependsOn(processResources)
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir "src/gen-sources/java"
+            srcDir "src/gen-sources/resources"
+        }
+    }
+}
+
+processResources {
+    from("src/gen-sources/resources") {
+        include "**/*"
+    }
+}
+
+mbg {
+    overwrite = false
+    consoleable = true
+    generatorFile = "./mbg/generatorConfig.xml"
+
+    jdbc {
+        driver = "com.mysql.jdbc.Driver"
+        url = "jdbc:mysql://47.97.192.240:3306/hichat?characterEncoding=UTF-8"
+        username = "root"
+        password = "123321"
+    }
+
+    xml {
+        resourcesProject = "src/gen-sources/java"
+        resourcesProject = "src/gen-sources/resources"
+        mapperPlugin = tk.mybatis.mapper.generator.MapperPlugin.class
+        mapperMapper = "com.cuisongliu.springboot.core.mapper.MyMapper"
+        mapperPackage = "cn.elmi.sample.mybatis.mapper"
+        modelPackage = "cn.elmi.sample.mybatis.vo"
+        xmlPackage = "cn.elmi.sample.mybatis.mapper.xml"
+        tableName = "chat_message"
+        objectName = "ChatMessage"
+        mapperSuffix = "Mapper"
+    }
+
+}

@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.elmi.sample.mybatis.mapper.ChatMessageMapper">
+  <resultMap id="BaseResultMap" type="cn.elmi.sample.mybatis.vo.ChatMessage">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="self_id" jdbcType="INTEGER" property="selfId" />
+    <result column="content_type" jdbcType="TINYINT" property="contentType" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="from_id" jdbcType="INTEGER" property="fromId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+    <result column="group_id" jdbcType="INTEGER" property="groupId" />
+    <result column="group_name" jdbcType="VARCHAR" property="groupName" />
+    <result column="group_avatar" jdbcType="VARCHAR" property="groupAvatar" />
+    <result column="chat_id" jdbcType="INTEGER" property="chatId" />
+    <result column="chat_name" jdbcType="VARCHAR" property="chatName" />
+    <result column="chat_avatar" jdbcType="VARCHAR" property="chatAvatar" />
+    <result column="message_type" jdbcType="TINYINT" property="messageType" />
+    <result column="timestamp" jdbcType="VARCHAR" property="timestamp" />
+    <result column="create_timestamp" jdbcType="VARCHAR" property="createTimestamp" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="top_timestamp" jdbcType="VARCHAR" property="topTimestamp" />
+    <result column="top_time" jdbcType="TIMESTAMP" property="topTime" />
+    <result column="top_mark" jdbcType="BIT" property="topMark" />
+    <result column="shield_mark" jdbcType="BIT" property="shieldMark" />
+    <result column="mine" jdbcType="BIT" property="mine" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="friend_note" jdbcType="VARCHAR" property="friendNote" />
+    <result column="offline_message_number" jdbcType="INTEGER" property="offlineMessageNumber" />
+    <result column="file_path" jdbcType="VARCHAR" property="filePath" />
+    <result column="voice_call" jdbcType="VARCHAR" property="voiceCall" />
+    <result column="is_read" jdbcType="BIT" property="isRead" />
+    <result column="is_chat_page_open" jdbcType="BIT" property="isChatPageOpen" />
+    <result column="is_playing" jdbcType="BIT" property="isPlaying" />
+    <result column="is_show" jdbcType="BIT" property="isShow" />
+    <result column="is_checked" jdbcType="BIT" property="isChecked" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, self_id, content_type, content, from_id, user_name, avatar, group_id, group_name, 
+    group_avatar, chat_id, chat_name, chat_avatar, message_type, timestamp, create_timestamp, 
+    create_time, top_timestamp, top_time, top_mark, shield_mark, mine, user_id, friend_note, 
+    offline_message_number, file_path, voice_call, is_read, is_chat_page_open, is_playing, 
+    is_show, is_checked
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from chat_message
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from chat_message
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.elmi.sample.mybatis.vo.ChatMessage">
+    insert into chat_message (id, self_id, content_type, 
+      content, from_id, user_name, 
+      avatar, group_id, group_name, 
+      group_avatar, chat_id, chat_name, 
+      chat_avatar, message_type, timestamp, 
+      create_timestamp, create_time, top_timestamp, 
+      top_time, top_mark, shield_mark, 
+      mine, user_id, friend_note, 
+      offline_message_number, file_path, voice_call, 
+      is_read, is_chat_page_open, is_playing, 
+      is_show, is_checked)
+    values (#{id,jdbcType=INTEGER}, #{selfId,jdbcType=INTEGER}, #{contentType,jdbcType=TINYINT}, 
+      #{content,jdbcType=VARCHAR}, #{fromId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, 
+      #{avatar,jdbcType=VARCHAR}, #{groupId,jdbcType=INTEGER}, #{groupName,jdbcType=VARCHAR}, 
+      #{groupAvatar,jdbcType=VARCHAR}, #{chatId,jdbcType=INTEGER}, #{chatName,jdbcType=VARCHAR}, 
+      #{chatAvatar,jdbcType=VARCHAR}, #{messageType,jdbcType=TINYINT}, #{timestamp,jdbcType=VARCHAR}, 
+      #{createTimestamp,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{topTimestamp,jdbcType=VARCHAR}, 
+      #{topTime,jdbcType=TIMESTAMP}, #{topMark,jdbcType=BIT}, #{shieldMark,jdbcType=BIT}, 
+      #{mine,jdbcType=BIT}, #{userId,jdbcType=INTEGER}, #{friendNote,jdbcType=VARCHAR}, 
+      #{offlineMessageNumber,jdbcType=INTEGER}, #{filePath,jdbcType=VARCHAR}, #{voiceCall,jdbcType=VARCHAR}, 
+      #{isRead,jdbcType=BIT}, #{isChatPageOpen,jdbcType=BIT}, #{isPlaying,jdbcType=BIT}, 
+      #{isShow,jdbcType=BIT}, #{isChecked,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.elmi.sample.mybatis.vo.ChatMessage">
+    insert into chat_message
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="selfId != null">
+        self_id,
+      </if>
+      <if test="contentType != null">
+        content_type,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="fromId != null">
+        from_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="avatar != null">
+        avatar,
+      </if>
+      <if test="groupId != null">
+        group_id,
+      </if>
+      <if test="groupName != null">
+        group_name,
+      </if>
+      <if test="groupAvatar != null">
+        group_avatar,
+      </if>
+      <if test="chatId != null">
+        chat_id,
+      </if>
+      <if test="chatName != null">
+        chat_name,
+      </if>
+      <if test="chatAvatar != null">
+        chat_avatar,
+      </if>
+      <if test="messageType != null">
+        message_type,
+      </if>
+      <if test="timestamp != null">
+        timestamp,
+      </if>
+      <if test="createTimestamp != null">
+        create_timestamp,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="topTimestamp != null">
+        top_timestamp,
+      </if>
+      <if test="topTime != null">
+        top_time,
+      </if>
+      <if test="topMark != null">
+        top_mark,
+      </if>
+      <if test="shieldMark != null">
+        shield_mark,
+      </if>
+      <if test="mine != null">
+        mine,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="friendNote != null">
+        friend_note,
+      </if>
+      <if test="offlineMessageNumber != null">
+        offline_message_number,
+      </if>
+      <if test="filePath != null">
+        file_path,
+      </if>
+      <if test="voiceCall != null">
+        voice_call,
+      </if>
+      <if test="isRead != null">
+        is_read,
+      </if>
+      <if test="isChatPageOpen != null">
+        is_chat_page_open,
+      </if>
+      <if test="isPlaying != null">
+        is_playing,
+      </if>
+      <if test="isShow != null">
+        is_show,
+      </if>
+      <if test="isChecked != null">
+        is_checked,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="selfId != null">
+        #{selfId,jdbcType=INTEGER},
+      </if>
+      <if test="contentType != null">
+        #{contentType,jdbcType=TINYINT},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="fromId != null">
+        #{fromId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null">
+        #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="groupId != null">
+        #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="groupName != null">
+        #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="groupAvatar != null">
+        #{groupAvatar,jdbcType=VARCHAR},
+      </if>
+      <if test="chatId != null">
+        #{chatId,jdbcType=INTEGER},
+      </if>
+      <if test="chatName != null">
+        #{chatName,jdbcType=VARCHAR},
+      </if>
+      <if test="chatAvatar != null">
+        #{chatAvatar,jdbcType=VARCHAR},
+      </if>
+      <if test="messageType != null">
+        #{messageType,jdbcType=TINYINT},
+      </if>
+      <if test="timestamp != null">
+        #{timestamp,jdbcType=VARCHAR},
+      </if>
+      <if test="createTimestamp != null">
+        #{createTimestamp,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="topTimestamp != null">
+        #{topTimestamp,jdbcType=VARCHAR},
+      </if>
+      <if test="topTime != null">
+        #{topTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="topMark != null">
+        #{topMark,jdbcType=BIT},
+      </if>
+      <if test="shieldMark != null">
+        #{shieldMark,jdbcType=BIT},
+      </if>
+      <if test="mine != null">
+        #{mine,jdbcType=BIT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="friendNote != null">
+        #{friendNote,jdbcType=VARCHAR},
+      </if>
+      <if test="offlineMessageNumber != null">
+        #{offlineMessageNumber,jdbcType=INTEGER},
+      </if>
+      <if test="filePath != null">
+        #{filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="voiceCall != null">
+        #{voiceCall,jdbcType=VARCHAR},
+      </if>
+      <if test="isRead != null">
+        #{isRead,jdbcType=BIT},
+      </if>
+      <if test="isChatPageOpen != null">
+        #{isChatPageOpen,jdbcType=BIT},
+      </if>
+      <if test="isPlaying != null">
+        #{isPlaying,jdbcType=BIT},
+      </if>
+      <if test="isShow != null">
+        #{isShow,jdbcType=BIT},
+      </if>
+      <if test="isChecked != null">
+        #{isChecked,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.elmi.sample.mybatis.vo.ChatMessage">
+    update chat_message
+    <set>
+      <if test="selfId != null">
+        self_id = #{selfId,jdbcType=INTEGER},
+      </if>
+      <if test="contentType != null">
+        content_type = #{contentType,jdbcType=TINYINT},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="fromId != null">
+        from_id = #{fromId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null">
+        avatar = #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="groupId != null">
+        group_id = #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="groupName != null">
+        group_name = #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="groupAvatar != null">
+        group_avatar = #{groupAvatar,jdbcType=VARCHAR},
+      </if>
+      <if test="chatId != null">
+        chat_id = #{chatId,jdbcType=INTEGER},
+      </if>
+      <if test="chatName != null">
+        chat_name = #{chatName,jdbcType=VARCHAR},
+      </if>
+      <if test="chatAvatar != null">
+        chat_avatar = #{chatAvatar,jdbcType=VARCHAR},
+      </if>
+      <if test="messageType != null">
+        message_type = #{messageType,jdbcType=TINYINT},
+      </if>
+      <if test="timestamp != null">
+        timestamp = #{timestamp,jdbcType=VARCHAR},
+      </if>
+      <if test="createTimestamp != null">
+        create_timestamp = #{createTimestamp,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="topTimestamp != null">
+        top_timestamp = #{topTimestamp,jdbcType=VARCHAR},
+      </if>
+      <if test="topTime != null">
+        top_time = #{topTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="topMark != null">
+        top_mark = #{topMark,jdbcType=BIT},
+      </if>
+      <if test="shieldMark != null">
+        shield_mark = #{shieldMark,jdbcType=BIT},
+      </if>
+      <if test="mine != null">
+        mine = #{mine,jdbcType=BIT},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="friendNote != null">
+        friend_note = #{friendNote,jdbcType=VARCHAR},
+      </if>
+      <if test="offlineMessageNumber != null">
+        offline_message_number = #{offlineMessageNumber,jdbcType=INTEGER},
+      </if>
+      <if test="filePath != null">
+        file_path = #{filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="voiceCall != null">
+        voice_call = #{voiceCall,jdbcType=VARCHAR},
+      </if>
+      <if test="isRead != null">
+        is_read = #{isRead,jdbcType=BIT},
+      </if>
+      <if test="isChatPageOpen != null">
+        is_chat_page_open = #{isChatPageOpen,jdbcType=BIT},
+      </if>
+      <if test="isPlaying != null">
+        is_playing = #{isPlaying,jdbcType=BIT},
+      </if>
+      <if test="isShow != null">
+        is_show = #{isShow,jdbcType=BIT},
+      </if>
+      <if test="isChecked != null">
+        is_checked = #{isChecked,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.elmi.sample.mybatis.vo.ChatMessage">
+    update chat_message
+    set self_id = #{selfId,jdbcType=INTEGER},
+      content_type = #{contentType,jdbcType=TINYINT},
+      content = #{content,jdbcType=VARCHAR},
+      from_id = #{fromId,jdbcType=INTEGER},
+      user_name = #{userName,jdbcType=VARCHAR},
+      avatar = #{avatar,jdbcType=VARCHAR},
+      group_id = #{groupId,jdbcType=INTEGER},
+      group_name = #{groupName,jdbcType=VARCHAR},
+      group_avatar = #{groupAvatar,jdbcType=VARCHAR},
+      chat_id = #{chatId,jdbcType=INTEGER},
+      chat_name = #{chatName,jdbcType=VARCHAR},
+      chat_avatar = #{chatAvatar,jdbcType=VARCHAR},
+      message_type = #{messageType,jdbcType=TINYINT},
+      timestamp = #{timestamp,jdbcType=VARCHAR},
+      create_timestamp = #{createTimestamp,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      top_timestamp = #{topTimestamp,jdbcType=VARCHAR},
+      top_time = #{topTime,jdbcType=TIMESTAMP},
+      top_mark = #{topMark,jdbcType=BIT},
+      shield_mark = #{shieldMark,jdbcType=BIT},
+      mine = #{mine,jdbcType=BIT},
+      user_id = #{userId,jdbcType=INTEGER},
+      friend_note = #{friendNote,jdbcType=VARCHAR},
+      offline_message_number = #{offlineMessageNumber,jdbcType=INTEGER},
+      file_path = #{filePath,jdbcType=VARCHAR},
+      voice_call = #{voiceCall,jdbcType=VARCHAR},
+      is_read = #{isRead,jdbcType=BIT},
+      is_chat_page_open = #{isChatPageOpen,jdbcType=BIT},
+      is_playing = #{isPlaying,jdbcType=BIT},
+      is_show = #{isShow,jdbcType=BIT},
+      is_checked = #{isChecked,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

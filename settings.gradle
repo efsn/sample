@@ -13,5 +13,7 @@ file("spring-cloud").eachDir { dir ->
 
 include "netty"
 
+include "restful"
+include "mybatis"
 
 //inclunde "amqp"

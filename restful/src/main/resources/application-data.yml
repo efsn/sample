@@ -1,0 +1,39 @@
+mybatis:
+  typeAliasesPackage: cn.elmi.sample.mybatis.vo
+  mapperLocations: classpath*:cn/elmi/sample/mybatis/mapper/**/*Mapper.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+
+spring:
+  datasource:
+    name: hichat
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://47.97.192.240:3306/hichat?characterEncoding=UTF-8
+    username: root
+    password: 123321
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      connectionTimeout: 30000
+      idleTimeout: 600000
+      maxLifetime: 1800000
+      maxPoolSize: 15
+#      healthCheckProperties:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

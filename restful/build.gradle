@@ -1,0 +1,16 @@
+dependencies {
+    compile project(":mybatis")
+
+    compile lib.spring.boot.starter.web,
+            lib.aspectj.aspectjrt,
+            lib.aspectj.aspectjweaver,
+            lib.apache.commons.lang3
+
+    compileJava.dependsOn(processResources)
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+}
+
+jar {
+    baseName = "restful"
+}
+

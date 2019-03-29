@@ -36,7 +36,7 @@ ext {
     jedisVersion = "2.9.0"
 
     // other libs
-    lombokVersion = "1.16.16"
+    lombokVersion = "1.18.6"
     servletVersion = "3.1.0"
     validator = "5.4.1.Final"
     influxdbVersion = "2.5"
