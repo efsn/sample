@@ -1,5 +1,7 @@
 package cn.elmi.sample.mybatis.service;
 
+import java.util.List;
+
 import cn.elmi.sample.mybatis.mapper.ChatMessageMapper;
 import cn.elmi.sample.mybatis.vo.ChatMessage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,10 @@ public class ChatMessageService {
 
     public int insert(ChatMessage chatMessage) {
         return mapper.insert(chatMessage);
+    }
+
+    public int batchInsert(List<ChatMessage> chatMessages) {
+        return mapper.batchInsert(chatMessages);
     }
 
     public int update(ChatMessage chatMessage) {

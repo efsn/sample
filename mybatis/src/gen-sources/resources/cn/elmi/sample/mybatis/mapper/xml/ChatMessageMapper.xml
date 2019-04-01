@@ -76,6 +76,35 @@
       #{isRead,jdbcType=BIT}, #{isChatPageOpen,jdbcType=BIT}, #{isPlaying,jdbcType=BIT}, 
       #{isShow,jdbcType=BIT}, #{isChecked,jdbcType=BIT})
   </insert>
+
+  <insert id="batchInsert" parameterType="List">
+    insert into chat_message (id, self_id, content_type,
+    content, from_id, user_name,
+    avatar, group_id, group_name,
+    group_avatar, chat_id, chat_name,
+    chat_avatar, message_type, timestamp,
+    create_timestamp, create_time, top_timestamp,
+    top_time, top_mark, shield_mark,
+    mine, user_id, friend_note,
+    offline_message_number, file_path, voice_call,
+    is_read, is_chat_page_open, is_playing,
+    is_show, is_checked)
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+      (#{item.id,jdbcType=INTEGER}, #{item.selfId,jdbcType=INTEGER}, #{item.contentType,jdbcType=TINYINT},
+      #{item.content,jdbcType=VARCHAR}, #{item.fromId,jdbcType=INTEGER}, #{item.userName,jdbcType=VARCHAR},
+      #{item.avatar,jdbcType=VARCHAR}, #{item.groupId,jdbcType=INTEGER}, #{item.groupName,jdbcType=VARCHAR},
+      #{item.groupAvatar,jdbcType=VARCHAR}, #{item.chatId,jdbcType=INTEGER}, #{item.chatName,jdbcType=VARCHAR},
+      #{item.chatAvatar,jdbcType=VARCHAR}, #{item.messageType,jdbcType=TINYINT}, #{item.timestamp,jdbcType=VARCHAR},
+      #{item.createTimestamp,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.topTimestamp,jdbcType=VARCHAR},
+      #{item.topTime,jdbcType=TIMESTAMP}, #{item.topMark,jdbcType=BIT}, #{item.shieldMark,jdbcType=BIT},
+      #{item.mine,jdbcType=BIT}, #{item.userId,jdbcType=INTEGER}, #{item.friendNote,jdbcType=VARCHAR},
+      #{item.offlineMessageNumber,jdbcType=INTEGER}, #{item.filePath,jdbcType=VARCHAR}, #{item.voiceCall,jdbcType=VARCHAR},
+      #{item.isRead,jdbcType=BIT}, #{item.isChatPageOpen,jdbcType=BIT}, #{item.isPlaying,jdbcType=BIT},
+      #{item.isShow,jdbcType=BIT}, #{item.isChecked,jdbcType=BIT})
+    </foreach>
+  </insert>
+
   <insert id="insertSelective" parameterType="cn.elmi.sample.mybatis.vo.ChatMessage">
     insert into chat_message
     <trim prefix="(" suffix=")" suffixOverrides=",">

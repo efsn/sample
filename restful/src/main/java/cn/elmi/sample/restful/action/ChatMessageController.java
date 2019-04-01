@@ -23,6 +23,11 @@ public class ChatMessageController {
         return chatMessageService.insert(chatMessage);
     }
 
+    @PostMapping("/batch")
+    public int addList(@RequestBody List<ChatMessage> chatMessages) {
+        return chatMessageService.batchInsert(chatMessages);
+    }
+
     @GetMapping
     public List<ChatMessage> chatMessages() {
         return null;
