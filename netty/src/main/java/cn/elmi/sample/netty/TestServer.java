@@ -16,6 +16,7 @@
 
 package cn.elmi.sample.netty;
 
+import cn.elmi.sample.netty.chat.ChatServerInitializer;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.EventLoopGroup;
@@ -39,7 +40,7 @@ public class TestServer {
             ServerBootstrap serverBootstrap = new ServerBootstrap();
             serverBootstrap.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
-                    .childHandler(new TestServerInitializer());
+                    .childHandler(new ChatServerInitializer());
 
             ChannelFuture channelFuture = serverBootstrap.bind(8970).sync();
             channelFuture.channel().closeFuture().sync();
