@@ -11,6 +11,6 @@ dependencies {
 }
 
 jar {
-    baseName = "restful"
+    archiveBaseName = "restful"
 }
 

@@ -15,5 +15,8 @@ include "netty"
 
 include "restful"
 include "mybatis"
+include "junit"
+
+
 
 //inclunde "amqp"
