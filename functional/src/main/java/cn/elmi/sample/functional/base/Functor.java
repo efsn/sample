@@ -14,27 +14,42 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package cn.elmi.sample.functional;
+package cn.elmi.sample.functional.base;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 /**
  * @author Arthur
  * @since 1.0
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
-public class Application extends Functor {
+public class Functor {
 
-    private Func func;
+    private Object val;
 
-    private Application(Func func) {
-        super(func);
+    protected Functor(Object val) {
+        this.val = val;
     }
 
-    public Functor apply(Functor functor) {
-        return of(func.exc(functor.getVal()));
+    /**
+     * 集合转换
+     * @param func
+     * @return
+     */
+    public Functor map(Func func) {
+        return of(func.exc(val));
+    }
+
+    public Functor of(Object val) {
+        return new Functor(val);
+    }
+
+    /**
+     * 链式
+     * @return
+     */
+    public Object join(){
+        return getVal();
     }
 
 }

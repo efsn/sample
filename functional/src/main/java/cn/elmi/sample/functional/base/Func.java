@@ -14,63 +14,15 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package cn.elmi.sample.functional;
-
-import lombok.Data;
+package cn.elmi.sample.functional.base;
 
 /**
  * @author Arthur
  * @since 1.0
  */
-@Data
-public class IO {
+@FunctionalInterface
+public interface Func {
 
-    private Object val;
-
-    /**
-     * 集合转换
-     *
-     * @param func
-     * @return
-     */
-    public IO map(Func func) {
-        return of(func);
-    }
-
-    private IO(Func func) {
-        this.val = func;
-    }
-
-    public IO of(Func func) {
-        return new IO(func);
-    }
-
-    /**
-     * 链式
-     *
-     * @return
-     */
-    public Object join() {
-        return getVal();
-    }
-
-
-    public Object flatMap(Func func) {
-        return map(func).join();
-    }
-
-    public static void main(String[] args) {
-        Func read = x -> new IO(y -> x);
-
-        Func print = x -> new IO(y -> {
-            System.out.println(x);
-            return x;
-        });
-
-        Func tail = x -> new IO(y -> x.toString());
-
-        ((Monad) ((Monad) read.exc("xyz")).flatMap(tail)).flatMap(print);
-
-    }
+    Object exc(Object val);
 
 }

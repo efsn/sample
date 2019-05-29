@@ -14,42 +14,24 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package cn.elmi.sample.functional;
-
-import lombok.Data;
+package cn.elmi.sample.functional.base;
 
 /**
  * @author Arthur
  * @since 1.0
  */
-@Data
-public class Functor {
+public class Maybe extends Functor {
 
-    private Object val;
-
-    protected Functor(Object val) {
-        this.val = val;
+    private Maybe(Object val) {
+        super(val);
     }
 
-    /**
-     * 集合转换
-     * @param func
-     * @return
-     */
-    public Functor map(Func func) {
-        return of(func.exc(val));
+    public Maybe map(Func func) {
+        return of(null != getVal() ? func.exc(getVal()) : null);
     }
 
-    public Functor of(Object val) {
-        return new Functor(val);
-    }
-
-    /**
-     * 链式
-     * @return
-     */
-    public Object join(){
-        return getVal();
+    public Maybe of(Object val) {
+        return new Maybe(val);
     }
 
 }

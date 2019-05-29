@@ -14,24 +14,20 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package cn.elmi.sample.functional;
+package cn.elmi.sample.functional.base;
 
 /**
  * @author Arthur
  * @since 1.0
  */
-public class Maybe extends Functor {
+public class Monad extends Functor {
 
-    private Maybe(Object val) {
-        super(val);
+    private Monad(Func func) {
+        super(func);
     }
 
-    public Maybe map(Func func) {
-        return of(null != getVal() ? func.exc(getVal()) : null);
-    }
-
-    public Maybe of(Object val) {
-        return new Maybe(val);
+    public Object flatMap(Func func) {
+        return map(func).join();
     }
 
 }
