@@ -1,0 +1,14 @@
+dependencies {
+    implementation "io.projectreactor:reactor-core:3.2.6.RELEASE"
+
+    testImplementation "org.junit.jupiter:junit-jupiter:5.4.2"
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
+
+

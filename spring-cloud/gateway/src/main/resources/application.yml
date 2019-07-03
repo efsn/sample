@@ -1,0 +1,15 @@
+server:
+  port: 8790
+
+# gateway configuration
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: test_route
+          uri: https://blog.elmi.cn
+          order: 0
+          predicates:
+            - Path=/farword/**
+          filters:
+            - StripPrefix=1

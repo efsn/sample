@@ -88,7 +88,8 @@ ext {
                             eureka_server    : "org.springframework.cloud:spring-cloud-starter-netflix-eureka-server",
                             hystrix          : "org.springframework.cloud:spring-cloud-starter-netflix-hystrix",
                             hystrix_dashboard: "org.springframework.cloud:spring-cloud-starter-netflix-hystrix-dashboard",
-                            ribbon           : "org.springframework.cloud:spring-cloud-starter-netflix-ribbon"
+                            ribbon           : "org.springframework.cloud:spring-cloud-starter-netflix-ribbon",
+                            gateway          : "org.springframework.cloud:spring-cloud-starter-gateway"
                     ]
             ],
 

@@ -1,0 +1,10 @@
+dependencies {
+    
+    implementation lib.spring.cloud.gateway
+    implementation lib.spring.cloud.hystrix
+    implementation("org.springframework.cloud:spring-cloud-starter-contract-stub-runner") {
+        exclude group: "org.spring.boot", module: "spring-boot-starter-web"
+    }
+
+
+}
