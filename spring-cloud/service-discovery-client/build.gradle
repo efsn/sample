@@ -1,6 +1,0 @@
-dependencies {
-    implementation lib.spring.cloud.eureka_client
-
-    implementation lib.spring.boot.starter.web
-
-}

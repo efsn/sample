@@ -1,3 +1,0 @@
-dependencies {
-    compile lib.spring.cloud.eureka_server
-}
