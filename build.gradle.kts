@@ -26,6 +26,8 @@ subprojects {
     apply(plugin = "org.springframework.boot")
     apply(plugin = "io.spring.dependency-management")
 
+    apply(from = rootProject.file("gradle/ktlint.gradle.kts"))
+
     group = "cn.elmi.sample"
     version = "1.0-SNAPSHOT"
 
@@ -104,4 +106,3 @@ subprojects {
     }
 
 }
-
