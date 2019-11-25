@@ -6,10 +6,10 @@ import org.springframework.boot.gradle.tasks.bundling.BootJar
 plugins {
     java
     `maven-publish`
-    kotlin("jvm") version "1.3.50"
-    kotlin("plugin.spring") version "1.3.50"
-    kotlin("plugin.jpa") version "1.3.50"
-    id("org.springframework.boot") version "2.1.9.RELEASE"
+    kotlin("jvm") version "1.3.60"
+    kotlin("plugin.spring") version "1.3.60"
+    kotlin("plugin.jpa") version "1.3.60"
+    id("org.springframework.boot") version "2.2.1.RELEASE"
 }
 
 // apply(from = rootProject.file("gradle/build-dependencies.gradle"))
@@ -18,11 +18,8 @@ subprojects {
     apply(plugin = "java-library")
     apply(plugin = "kotlin")
     apply(plugin = "org.jetbrains.kotlin.plugin.spring")
-    apply(plugin = "io.spring.dependency-management")
 
-    apply(plugin = "idea")
     apply(plugin = "java")
-    apply(plugin = "maven")
     apply(plugin = "org.springframework.boot")
     apply(plugin = "io.spring.dependency-management")
 

@@ -1,7 +1,7 @@
 rootProject.name = "sample"
 
 // multiple level modules
-files("spring-cloud").forEach { dir ->
+files("spring-cloud", "spring-cloud/feign-consumer", "spring-cloud/feign-producer").forEach { dir ->
     dir.listFiles().forEach {
         if (it.isDirectory) {
             include(it.name)
@@ -19,5 +19,7 @@ include("junit")
 include("kotlin")
 include("reactor")
 include("webflux")
+
+include("feign-consumer")
 
 //inclunde "amqp"
