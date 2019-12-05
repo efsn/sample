@@ -1,3 +1,3 @@
 dependencies {
-    implementation("io.projectreactor:reactor-core:3.2.6.RELEASE")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.2")
 }
