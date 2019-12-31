@@ -19,6 +19,8 @@ include("junit")
 include("kotlin")
 include("reactor")
 include("webflux")
+include("rule-engine")
+
 
 include("feign-consumer")
 

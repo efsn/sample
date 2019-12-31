@@ -1,4 +1,4 @@
-package cn.elmi.sample.kotlin.tdd
+package cn.elmi.sample.easy
 
 /*
    保龄球的一局称为一个frame，一共有10局。

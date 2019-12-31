@@ -1,4 +1,3 @@
-import io.spring.gradle.dependencymanagement.dsl.DependencyManagementExtension
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.springframework.boot.gradle.plugin.SpringBootPlugin
 import org.springframework.boot.gradle.tasks.bundling.BootJar
@@ -21,7 +20,6 @@ subprojects {
 
     apply(plugin = "java")
     apply(plugin = "org.springframework.boot")
-    apply(plugin = "io.spring.dependency-management")
 
     apply(from = rootProject.file("gradle/ktlint.gradle.kts"))
 
@@ -62,28 +60,23 @@ subprojects {
         implementation(kotlin("reflect"))
         implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
+        implementation(platform(SpringBootPlugin.BOM_COORDINATES))
+        implementation(platform("org.springframework.cloud:spring-cloud-dependencies:Greenwich.SR3"))
+
         implementation("org.springframework.boot:spring-boot-starter")
         implementation("org.slf4j:slf4j-api")
         implementation("ch.qos.logback:logback-core")
         implementation("ch.qos.logback:logback-classic")
 
-        // TODO junit5
         testImplementation("org.springframework.boot:spring-boot-starter-test")
-        testImplementation("org.junit.jupiter:junit-jupiter-api:5.5.2")
-        testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.5.2")
+        testImplementation("org.junit.jupiter:junit-jupiter-api")
+        testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 
         /*
             compileOnly lib.lombok
             annotationProcessor lib.lombok
         */
 
-    }
-
-    the<DependencyManagementExtension>().apply {
-        imports {
-            mavenBom(SpringBootPlugin.BOM_COORDINATES)
-            mavenBom("org.springframework.cloud:spring-cloud-dependencies:Greenwich.SR3")
-        }
     }
 
     tasks.withType<BootJar> {

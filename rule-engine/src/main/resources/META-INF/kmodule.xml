@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<kmodule xmlns="http://www.drools.org/xsd/kmodule">
+    <kbase name="HiKb" packages="cn.elmi.sample.easy.drools.hi">
+        <ksession name="HiKs"/>
+    </kbase>
+
+    <kbase name="StoreKb" packages="cn.elmi.sample.easy.drools.store">
+        <ksession name="StoreKs"/>
+    </kbase>
+</kmodule>

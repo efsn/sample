@@ -1,0 +1,23 @@
+package cn.elmi.sample.drools.hi
+
+import org.slf4j.Logger
+import cn.elmi.sample.drools.hi.*
+
+global Logger logger
+
+rule "Say hi"
+    when
+        $m:Message(status==MessageStatus.HI, $currentMsg:message)
+    then
+        logger.info("Rule: '{}', message: '{}'", getRule().getName(), $currentMsg);
+        logger.info("Rule: '{}', changing status to: '{}'", getRule().getName(), MessageStatus.BYE);
+        $m.setStatus(MessageStatus.BYE);
+        update($m)
+end
+
+rule "Say bye"
+    when
+        $m: Message(status==MessageStatus.BYE, $currentMsg:message)
+    then
+        logger.info("Rule: '{}', changing status to: '{}'", getRule().getName(), MessageStatus.BYE);
+end

@@ -1,4 +1,4 @@
-package cn.elmi.sample.kotlinx.coroutine
+package cn.elmi.sample.easy.coroutine
 
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
