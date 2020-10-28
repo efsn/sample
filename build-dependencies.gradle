@@ -101,7 +101,6 @@ ext {
             validator: "org.hibernate:hibernate-validator:$validator",
             servlet  : "javax.servlet:javax.servlet-api:$servletVersion",
 
-            testng   : "org.testng:testng:$testngVersion",
             slf4j    : "org.slf4j:slf4j-api:$slf4jVersion",
             logback  : [
                     core   : "ch.qos.logback:logback-core:$logbackVersion",

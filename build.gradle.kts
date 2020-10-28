@@ -5,10 +5,10 @@ import org.springframework.boot.gradle.tasks.bundling.BootJar
 plugins {
     java
     `maven-publish`
-    kotlin("jvm") version "1.3.60"
-    kotlin("plugin.spring") version "1.3.60"
-    kotlin("plugin.jpa") version "1.3.60"
-    id("org.springframework.boot") version "2.2.1.RELEASE"
+    kotlin("jvm") version "1.4.10"
+    kotlin("plugin.spring") version "1.4.10"
+    kotlin("plugin.jpa") version "1.4.10"
+    id("org.springframework.boot") version "2.3.4.RELEASE"
 }
 
 // apply(from = rootProject.file("gradle/build-dependencies.gradle"))
