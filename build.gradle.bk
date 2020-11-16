@@ -63,7 +63,7 @@ subprojects {
 
     bootJar {
         manifest {
-            attributes "Start-Class": "cn.elmi.sample.Application"
+            attributes "Start-Class": "cn.elmi.sample.ClientApplication"
         }
     }
 
