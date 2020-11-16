@@ -19,4 +19,3 @@ class GreetingAPI(
         return rpcService.hello(cmd)
     }
 }
-

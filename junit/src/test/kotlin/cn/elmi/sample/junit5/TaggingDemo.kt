@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test
  * @authur Arthur
  */
 @Tag("fast")
-//@Tag("model")
+// @Tag("model")
 class TaggingDemo {
     @Test
     @Tag("Taxes")
