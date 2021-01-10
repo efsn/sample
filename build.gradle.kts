@@ -4,9 +4,9 @@ import org.springframework.boot.gradle.plugin.SpringBootPlugin
 plugins {
     java
     `maven-publish`
-    kotlin("jvm") version "1.4.10"
-    kotlin("plugin.spring") version "1.4.10"
-    kotlin("plugin.jpa") version "1.4.10"
+    kotlin("jvm") version "1.4.21"
+    kotlin("plugin.spring") version "1.4.21"
+    kotlin("plugin.jpa") version "1.4.21"
     id("org.springframework.boot") version "2.3.6.RELEASE"
 }
 
@@ -44,12 +44,6 @@ subprojects {
         mavenCentral()
         jcenter()
     }
-
-    val compileKotlin: KotlinCompile by tasks
-    val compileTestKotlin: KotlinCompile by tasks
-    compileKotlin.kotlinOptions.jvmTarget = "1.8"
-    compileKotlin.kotlinOptions.freeCompilerArgs = listOf("-Xjsr305=strict")
-    compileTestKotlin.kotlinOptions.jvmTarget = "1.8"
 
     dependencies {
         implementation(kotlin("reflect"))
@@ -90,5 +84,4 @@ subprojects {
             }
         }
     }
-
 }
